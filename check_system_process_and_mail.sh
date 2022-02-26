@@ -11,7 +11,7 @@
 # 'grep' command use in Linux for the filter searches a file for a particular pattern of characters
 # '-lt' use to compare two arguments (True if arg1 less than arg2)
 # Date : 26-feb-2022
-# Thak you Roshni joshi  
+# Thank you Roshni joshi  
 # Group 08
 c1
 
