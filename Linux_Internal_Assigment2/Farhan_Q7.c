@@ -16,7 +16,7 @@ int main()
 	{
 		printf("Child process pid: %d\n",getpid());
 
-		execl("/home/farhan/shell/linux1/ass/ass2", "./Farhan_Q7_1", 0);//executing a test program using exec()	
+		execl("/home/farhan/shell/linux1/ass/ass2/Farhan_Q7_1", "./Farhan_Q7_1", 0);//executing a test program using exec()	
 	}
 	
 	else
