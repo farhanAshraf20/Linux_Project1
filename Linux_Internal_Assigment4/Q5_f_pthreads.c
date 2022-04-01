@@ -10,7 +10,7 @@ Farhan Ashraf
 
 static pthread_spinlock_t the_spin_lock;		//declare spin lock
 
-void *thd_task_1(void *args)				//defining thread 1 task
+void *f_th_task_1(void *args)				//defining thread 1 task
 {
 	printf("Entering Thread 1 spin lock\n");
 	
@@ -20,7 +20,7 @@ void *thd_task_1(void *args)				//defining thread 1 task
 
 	printf("Thread 1 sending signals from critical section.\n");
 	
-	printf("Starting countdown sequence from 20....\n");
+	printf("Starting countdown sequence from 10\n");
 	
 	for(int i=10; i>=0; i--)
 	{
@@ -31,16 +31,16 @@ void *thd_task_1(void *args)				//defining thread 1 task
 
 	pthread_spin_unlock(&the_spin_lock);		//release lock
 	
-	printf("Lock released...\nExiting from thread 1..\n");
+	printf("Lock released...\nExiting from thread 1\n");
 
 	return NULL;
 }
 
-void *thd_task_2(void *args)				//defining thread 2 task
+void *f_th_task_2(void *args)				//defining thread 2 task
 {
-	printf("Inside thread 2 task....\n");
+	printf("Inside thread 2 task\n");
 
-	printf("Entering thread 2 spin lock....\n");
+	printf("Entering thread 2 spin lock\n");
 	
 	pthread_spin_lock(&the_spin_lock);		//apply lock
 
@@ -48,7 +48,7 @@ void *thd_task_2(void *args)				//defining thread 2 task
 
 	printf("Hey, this is thread 2 sending signals from critical section.\n");
 	
-	printf("Starting countdown sequence from 10....\n");
+	printf("Starting countdown sequence from 5\n");
 	
 	for(int i=5; i>0; i--)
 	{
@@ -59,14 +59,14 @@ void *thd_task_2(void *args)				//defining thread 2 task
 
 	pthread_spin_unlock(&the_spin_lock);		//release lock
 	
-	printf("Lock released...\nExiting from thread 2..\n");
+	printf("Lock released\nExiting from thread 2\n");
 
 	return NULL;
 }
 
 int main()
 {
-	pthread_t my_thd1, my_thd2;
+	pthread_t f_thd1, f_thd2;
 
 	printf("Inside Main thread: %ld\n",pthread_self());
 
@@ -74,12 +74,12 @@ int main()
 		perror("spin init");
 
 	//create 2 threads
-	pthread_create(&my_thd1, NULL, thd_task_1, NULL);
-	pthread_create(&my_thd2, NULL, thd_task_2, NULL);
+	pthread_create(&f_thd1, NULL, f_th_task_1, NULL);
+	pthread_create(&f_thd2, NULL, f_th_task_2, NULL);
 
 	//joining threads with the main thread
-	pthread_join(my_thd1, NULL);
-	pthread_join(my_thd2, NULL);
+	pthread_join(f_thd1, NULL);
+	pthread_join(f_thd2, NULL);
 
 	printf("Exiting from Main thread\n");
 
