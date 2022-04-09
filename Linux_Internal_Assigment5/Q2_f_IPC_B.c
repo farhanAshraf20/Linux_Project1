@@ -14,7 +14,7 @@ Farhan Ashraf
 #include<stdlib.h>
 #include<string.h>
 
-#define key 34
+#define key 33
 
 struct msgqu
 {
